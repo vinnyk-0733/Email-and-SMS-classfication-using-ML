@@ -1,11 +1,14 @@
 import streamlit as st
 import pickle
+import os
 import string
 from nltk.corpus import stopwords
 import nltk
 from nltk.stem.porter import PorterStemmer
-nltk.download("punkt_tab")
-nltk.download('stopwords')
+nltk_data_path = os.path.join(os.path.expanduser("~"), "nltk_data")
+if not os.path.exists(nltk_data_path):
+    nltk.download("punkt_tab")
+    nltk.download('stopwords')
 ps = PorterStemmer()
 
 def text_transform(text):
